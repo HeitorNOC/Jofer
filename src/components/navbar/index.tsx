@@ -1,4 +1,4 @@
-import { NavContainer, NavLeft, NavRight } from "./styles";
+import { Button, Line, NavContainer, NavLeft, NavRight } from "./styles";
 import Logo from '../../../public/assets/images/Colibri.svg'
 import Image from "next/image";
 
@@ -16,11 +16,11 @@ export default function Navbar() {
           <a href="#livros">Livros</a>
           <a href="#videos">Vídeos</a>
           <a href="#audios">Áudios</a>
-          <button>Contato</button>
-          <button>Login</button>
+          <Button color={"white"}>Contato</Button>
+          <Button color={"black"}>Login</Button>
         </NavRight>
       </NavContainer>
-      <div className="line"></div>
+      <Line />
     </>
   )
 }
