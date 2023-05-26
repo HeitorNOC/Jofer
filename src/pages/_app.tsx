@@ -14,10 +14,12 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
     <SessionProvider session={session}>
       <div className={`${lora.className}`}>
 
+        <div id='container'>
 
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
       </div>
     </SessionProvider>
   )
