@@ -17,11 +17,11 @@ model Account {
   provider          String
   providerAccountId String
   refresh_token     String?
-  access_token      String?
+  access_token      String? @db.VarChar(255)
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String?
+  id_token          String? @db.Text
   session_state     String?
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -42,12 +42,17 @@ model Session {
 }
 
 model User {
-  id       String    @id @default(cuid())
-  name     String?
-  email    String    @unique
-  comments Comment[]
-  accounts Account[]
-  sessions Session[]
+  id            String    @id @default(uuid())
+  name          String
+  avatar_url    String?
+  created_at    DateTime  @default(now())
+  email         String    @unique
+  emailVerified DateTime?
+  comments      Comment[]
+  accounts      Account[]
+  sessions      Session[]
+
+  @@map("users")
 }
 
 model Book {

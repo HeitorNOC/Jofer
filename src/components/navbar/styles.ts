@@ -25,6 +25,9 @@ export const NavLeft = styled("div", {
 })
 
 export const Button = styled("button", {
+  display: "flex",
+  alignItems: "center",
+  gap: 6,
   padding: "8px 20px",
   cursor: "pointer",
   background: "linear-gradient(to bottom, #4dc7d9 0%,#66a6ff 100%)",
