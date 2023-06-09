@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "openmobile": "node ./node_modules/openmobile/ip.js"
   },
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.6",
@@ -29,6 +30,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "openmobile": "^1.0.6",
     "prisma": "^4.14.1"
   }
 }
