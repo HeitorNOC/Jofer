@@ -14,6 +14,12 @@ export const globalStyles = globalCss({
     height: "100vh",
     position: "relative",
     overflow: "hidden",
+
+    "@media (max-width: 500px)": {
+      overflowY: "scroll",
+      height: "100%",
+      width: "100%"
+  }
   },
 
   '#container::before': {

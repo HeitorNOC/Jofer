@@ -26,7 +26,7 @@ export const NavContainer = styled("div", {
   variants: {
     blur: {
       true: {
-        filter: "blur(4px)",
+        backdropFilter: "blur(10px)",
         pointerEvents: "none",
       },
     },
@@ -171,7 +171,7 @@ export const NavRight = styled("div", {
   variants: {
     blur: {
       true: {
-        filter: "blur(4px)",
+        backdropFilter: "blur(10px)",
         pointerEvents: "none",
       },
     },

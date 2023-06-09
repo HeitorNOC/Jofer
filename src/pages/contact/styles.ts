@@ -6,6 +6,12 @@ export const ContactContainer = styled("div", {
     justifyContent: "center",
     height: "85vh",
     width: "100vw",
+
+    "@media (max-width: 500px)": {
+        overflow: "scroll",
+        height: "100vh",
+        paddingTop: 40
+    }
 });
 
 export const ContactHero = styled("div", {
@@ -25,9 +31,17 @@ export const Container = styled("div", {
 
     "@media (max-width: 1440px)": {
         flexDirection: "column",
-        width: "80%",
-        margin: "0 auto"
+        width: "calc(100% - 70px)",
+        margin: "0 auto",
+        padding: "0 40px 30px 10px"
     },
+    "@media (max-width: 768px)": {
+        width: "70%",
+        marginBottom: 30,
+        
+    }
+    
+
 });
 
 export const Content = styled("div", {
@@ -37,7 +51,7 @@ export const Content = styled("div", {
 
     "@media (max-width: 1440px)": {
         flexDirection: "column",
-        
+
     },
 
     "@media (max-width: 1024px)": {
@@ -50,6 +64,7 @@ export const Content = styled("div", {
 
     "@media (max-width: 500px)": {
         flexDirection: "column",
+        
 
         '.dtContainer': {
             display: "flex",
@@ -57,8 +72,10 @@ export const Content = styled("div", {
             alignItems: "center",
             justifyContent: "center",
             marginLeft: 45,
-            gap: 15
+            gap: 15,
+            
         },
+        overflow: "scroll"
     },
 });
 
@@ -69,9 +86,10 @@ export const LeftSide = styled("div", {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 14,
+    marginTop: 20,
     position: "relative",
-    
+
+    flexWrap: "wrap",
     "@media (max-width: 1440px)": {
         width: "100%",
         alignItems: "center",
@@ -80,13 +98,12 @@ export const LeftSide = styled("div", {
             alignItems: "center",
             justifyContent: "center",
             marginLeft: 45,
-            gap: 15
+            gap: 15,
+            marginTop: 0
         },
 
-        marginTop: 20,
-        justifyContent: "center",
-        flexWrap: "wrap",
-        
+
+
     },
 
     "@media (max-width: 1024px)": {
@@ -99,18 +116,20 @@ export const LeftSide = styled("div", {
 
     "@media (max-width: 768px)": {
         width: "100%",
-        flexDirection: "column",
+        flexDirection: "row",
         marginTop: 40,
         justifyContent: "center",
-        flexWrap: "wrap",
+        
+
+        
     },
 
     "@media (max-width: 500px)": {
         width: "100%",
-        flexDirection: "column",
+        flexDirection: "row",
         marginTop: 40,
         justifyContent: "center",
-        flexWrap: "wrap",
+        
     },
 });
 
@@ -157,8 +176,13 @@ export const RightSide = styled("div", {
     },
 
     "@media (max-width: 768px)": {
-        width: "100%",
-        marginLeft: 0,
+        width: "70%",
+        marginLeft: 0, 
+        p: {
+            display: "none"
+        },
+
+        justifyContent: "center"
     },
 
     "@media (max-width: 500px)": {

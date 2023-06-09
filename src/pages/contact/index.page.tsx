@@ -55,12 +55,12 @@ const Contact = () => {
                 <TopicText>Entre em contato</TopicText>
                 <div className="dtContainer">
                   <Details>
-                    <Phone size={32} />
+                    <Phone size={32} color="#4dc7d9"/>
                     <DetailsTopic>Telefone</DetailsTopic>
                     <TextOne>+55 81 99954 2532</TextOne>
                   </Details>
                   <Details>
-                    <EnvelopeSimple size={32} weight="fill" />
+                    <EnvelopeSimple size={32} weight="fill" color="#66a6ff" />
                     <DetailsTopic>Email</DetailsTopic>
                     <TextOne>oliver.jofer@gmail.com</TextOne>
                   </Details>
@@ -68,7 +68,7 @@ const Contact = () => {
                     style={{ cursor: "pointer" }}
                     onClick={handleWhatsAppClick}
                   >
-                    <WhatsappLogo size={32} />
+                    <WhatsappLogo size={32} color="#25D366" style={{ border: "1px solid #000000" }}/>
                     <DetailsTopic>WhatsApp</DetailsTopic>
                     <TextOne>Clique para iniciar a conversa</TextOne>
                   </Details>
