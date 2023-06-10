@@ -68,7 +68,7 @@ const Contact = () => {
                     style={{ cursor: "pointer" }}
                     onClick={handleWhatsAppClick}
                   >
-                    <WhatsappLogo size={32} color="#25D366" style={{ border: "1px solid #000000" }}/>
+                    <WhatsappLogo size={32} color="#25D366"/>
                     <DetailsTopic>WhatsApp</DetailsTopic>
                     <TextOne>Clique para iniciar a conversa</TextOne>
                   </Details>

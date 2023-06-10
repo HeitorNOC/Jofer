@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -17,11 +17,11 @@ model Account {
   provider          String
   providerAccountId String
   refresh_token     String?
-  access_token      String? @db.VarChar(255)
+  access_token      String? 
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String? 
   session_state     String?
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -56,8 +56,10 @@ model User {
 }
 
 model Book {
-  id       Int       @id @default(autoincrement())
+  id       Int       @id @default(dbgenerated())
+  number Int
   title    String
+  subtitle String
   author   String
   pdfUrl   String
   coverUrl String
