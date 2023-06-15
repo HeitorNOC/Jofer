@@ -1,28 +1,29 @@
 import { PrismaClient } from '@prisma/client';
-import { books } from './constants/books';
+import { cordeis } from './constants/cordeis';
 
 const prisma = new PrismaClient();
 
 async function main() {
   await prisma.comment.deleteMany();
-  await prisma.book.deleteMany();
+  await prisma.cordel.deleteMany();
   await prisma.user.deleteMany();
 
-  const booksSeed = books.map((book) => {
-    return prisma.book.create({
+  const cordelSeed = cordeis.map((cordel) => {
+    return prisma.cordel.create({
       data: {
-        title: book.title,
-        number: book.number,
-        subtitle: book.subtitle,
-        author: book.author,
-        pdfUrl: book.pdfUrl,
-        coverUrl: book.coverUrl,
+        title: cordel.title,
+        number: cordel.number,
+        subtitle: cordel.subtitle || "",
+        author: cordel.author,
+        pdfUrl: cordel.pdfUrl,
+        frontCoverUrl: cordel.frontCoverUrl,
+        backCoverUrl: cordel.backCoverUrl,
       },
     });
   });
 
 
-  await prisma.$transaction([...booksSeed,]);
+  await prisma.$transaction([...cordelSeed,]);
 }
 
 main()

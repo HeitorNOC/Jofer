@@ -17,11 +17,11 @@ model Account {
   provider          String
   providerAccountId String
   refresh_token     String?
-  access_token      String? 
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? 
+  id_token          String?
   session_state     String?
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -55,27 +55,28 @@ model User {
   @@map("users")
 }
 
-model Book {
-  id       Int       @id @default(dbgenerated())
-  number Int
-  title    String
-  subtitle String
-  author   String
-  pdfUrl   String
-  coverUrl String
-  comments Comment[]
+model Cordel {
+  id            String    @id @default(uuid())
+  number        Int
+  title         String
+  subtitle      String
+  author        String
+  pdfUrl        String
+  frontCoverUrl String
+  backCoverUrl  String
+  comments      Comment[]
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid())
   comment   String
   userId    String // Referência ao ID do usuário que fez o comentário
-  bookId    Int // Referência ao ID do livro ao qual o comentário pertence
+  cordelId  String // Referência ao ID do livro ao qual o comentário pertence
   createdAt DateTime @default(now())
 
   // Relacionamento com o usuário
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // Relacionamento com o livro
-  book Book @relation(fields: [bookId], references: [id])
+  cordel Cordel @relation(fields: [cordelId], references: [id], onDelete: Cascade)
 }
