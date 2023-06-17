@@ -8,7 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const cordeis = await prisma.cordel.findMany({
     orderBy: {
-      number: "desc"
+      number: "asc"
     },
     select: {
       backCoverUrl: true,
