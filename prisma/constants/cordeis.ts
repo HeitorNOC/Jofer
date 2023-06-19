@@ -158,8 +158,8 @@ export const cordeis = [
         subtitle: "A evolução dos animais sob a ótica espírita",
         author: "João Ferreira",
         pdfUrl: "",
-        frontCoverUrl: "assets/cordeis/35 - Animais, nós também./01.png",
-        backCoverUrl: "assets/cordeis/35 - Animais, nós também./02.png",
+        frontCoverUrl: "assets/cordeis/35 - Animais, nós também/01.png",
+        backCoverUrl: "assets/cordeis/35 - Animais, nós também/02.png",
     },
     {
         number: 37,
