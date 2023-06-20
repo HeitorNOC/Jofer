@@ -13,21 +13,24 @@ export const CordelMain = styled("div", {
 });
 
 export const RightSection = styled("div", {
-  
+  width: "100%"
 });
 
 export const CommentSection = styled("div", {
+  width: "100%",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "flex-start",
   color: "White",
-  gap: 20
+  
 });
 
 export const CommentContainer = styled("div", {
   display: "flex",
-  justifyContent: "flex-end",
+  flexDirection: "column",
+  justifyContent: "center",
+  
   '.btn': {
     position: 'relative',
     fontSize: '17px',
@@ -81,19 +84,21 @@ export const FormError = styled("p", {
 })
 
 export const CommentInput = styled("div", {
-  margin: "20px 0",
+  width: "100%",
+  marginBottom: 20,
+  marginTop: 10,
 
   '.form__group': {
     position: 'relative',
     padding: '20px 0 0',
-    width: '100%',
+    width: '325%',
     height: "auto"
   },
 
   '.form__field': {
     fontFamily: 'inherit',
     width: '100%',
-    padding: "7px 0 200px 0",
+    padding: "7px 0 100px 0",
 
     border: '2px solid #000',
     outline: '0',
@@ -138,7 +143,7 @@ export const CommentInput = styled("div", {
     borderWidth: '3px',
     borderColor: '#000',
     borderImageSlice: 1,
-    padding: "7px 0 200px 5px",
+    padding: "7px 0 100px 0",
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
     background: '#fff',
@@ -224,3 +229,21 @@ export const Subtitle = styled("div", {
   overflow: "hidden",
   textOverflow: "ellipsis",
 });
+
+export const CommentDiv = styled("div", {
+  display: "flex",
+  flexDirection:"column",
+  justifyContent: "flex-start"
+})
+
+export const CommentBox = styled("div", {
+  
+})
+
+export const LeftBox = styled("div", {
+
+})
+
+export const RightBox = styled("div", {
+
+})

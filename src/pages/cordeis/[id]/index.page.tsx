@@ -3,14 +3,18 @@ import { QueryClient, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import {
   CardContainer,
+  CommentBox,
   CommentContainer,
+  CommentDiv,
   CommentInput,
   CommentSection,
   CordelContainer,
   CordelMain,
   FormError,
   IconContainer,
+  LeftBox,
   PdfIcon,
+  RightBox,
   RightSection,
   Subtitle,
   Thumbnail,
@@ -22,6 +26,7 @@ import { useSession } from "next-auth/react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 
 const commentSchema = z.object({
   comment: z
@@ -67,10 +72,17 @@ export default function Cordel() {
     window.open(pdfLink, "_blank");
   };
 
+
   async function handleConfirmComment(data: CommentFormData) {
     const { comment } = data
 
-    console.log(comment)
+    await api.post(`/cordeis/${cordelId}`, {
+      comment,
+      userId: session.data?.user.id,
+      cordelId
+    })
+
+    router.reload()
   }
 
 
@@ -93,7 +105,7 @@ export default function Cordel() {
           <RightSection>
             {session.data ? (
               <CommentSection>
-                <h1>Comentários:</h1>
+                <h1>Comentários</h1>
                 {
                   data.comments.length == 0 ? (
                     <CommentContainer>
@@ -102,7 +114,7 @@ export default function Cordel() {
                         <h1>Ainda não existem comentários, faça o primeiro!</h1>
                         <CommentInput>
                           <div className="form__group field">
-                            <textarea className="form__field" placeholder="Name" {...register('comment')}/>
+                            <textarea className="form__field" placeholder="Name" {...register('comment')} />
                             <label htmlFor="name" className="form__label">Comentário</label>
                           </div>
                         </CommentInput>
@@ -113,9 +125,33 @@ export default function Cordel() {
                       </form>
                     </CommentContainer>
                   ) : (
-                    data.comments.map((item: any) => (
-                      <h1>{item.comment}</h1>
-                    ))
+                    <CommentContainer>
+                      <form onSubmit={handleSubmit(handleConfirmComment)}>
+                        <CommentInput>
+                          <div className="form__group field">
+                            <textarea className="form__field" placeholder="Name" {...register('comment')} />
+                            <label htmlFor="name" className="form__label">Comentário</label>
+                          </div>
+                        </CommentInput>
+                        {errors.comment && (
+                          <FormError>{errors.comment.message}</FormError>
+                        )}
+                        <button disabled={isSubmitting} type="submit" className="btn">Comentar</button>
+                      </form>
+                      {data.comments.map((item: any) => (
+                        <CommentDiv>
+                          <CommentBox>
+                            <LeftBox>
+                              <Image src={item.user.avatar_url} alt="Avatar" width={40} height={40} style={{ borderRadius: 999 }}/>
+                              <h4>{item.user.name}</h4>
+                            </LeftBox>
+                            <RightBox>
+                              <p>{item.comment}</p>
+                            </RightBox>
+                          </CommentBox>
+                        </CommentDiv>
+                      ))}
+                    </CommentContainer>
                   )
                 }
               </CommentSection>
