@@ -15,8 +15,8 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
   globalStyles()
   const [queryClient] = useState(() => new QueryClient())
   return (
-    <SessionProvider session={session}>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <SessionProvider session={session}>
 
         <div className={`${lora.className}`}>
 
@@ -28,7 +28,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } }:
             </Layout>
           </div>
         </div>
-      </QueryClientProvider>
-    </SessionProvider>
+      </SessionProvider>
+    </QueryClientProvider>
   )
 }

@@ -71,6 +71,7 @@ export const CordeisContent = styled("div", {
   gridTemplateColumns: "repeat(4, 270px)",
   alignItems: "center",
   justifyContent: "center",
+  cursor: "pointer",
 
   gap: 50,
 

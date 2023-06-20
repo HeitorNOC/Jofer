@@ -2,36 +2,44 @@ import { api } from "@/lib/axios";
 import { CordeisContainer, CordeisContent, CordeisOptions, Input, InputContainer, Label, OptionsLeft, OptionsRight, PaginationButton, Underline, } from "./styles";
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { CaretLeft, CaretRight, MagnifyingGlass } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { useRouter } from "next/router";
 
 
 const queryClient = new QueryClient();
 
-async function fetchCordeis(page = 1) {
-  const { data } = await api.get("/cordeis?page=" + page);
-  return data;
-}
+
 
 export default function Cordeis() {
+  const router = useRouter()
   const [page, setPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+
+  async function fetchCordeis(page = 1) {
+    await router.push("/cordeis?page=" + page)
+    const { data } = await api.get("/cordeis?page=" + page);
+    return data;
+  
+  
+  }
+  
 
   const { status, data, error, isFetching, isPreviousData } = useQuery({
     queryKey: ["cordeis", page],
     queryFn: () => fetchCordeis(page),
-    keepPreviousData: true,
     staleTime: 5000,
+    keepPreviousData: true
   });
 
   // Prefetch the next page!
-  useEffect(() => {
+   useEffect(() => {
     if (!isPreviousData && data?.hasMore) {
       queryClient.prefetchQuery({
         queryKey: ["cordeis", page + 1],
         queryFn: () => fetchCordeis(page + 1),
       });
     }
-  }, [data, isPreviousData, page, queryClient]);
+  }, [data, isPreviousData, page, queryClient]); 
 
   const filteredCordeis = data?.cordeis.filter((cordel: any) =>
     cordel.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -47,6 +55,10 @@ export default function Cordeis() {
     if (page != data.totalPages) {
       setPage((prev) => prev + 1)
     }
+  }
+
+  async function handleCordelSelected(id: String) {
+    await router.push(`cordeis/${id}`)
   }
 
   return (
@@ -85,7 +97,7 @@ export default function Cordeis() {
           <CordeisContent>
             {filteredCordeis?.map((cordel: any) => (
               // Renderizar os cordeis filtrados
-              <div className="flip-card" key={cordel.id}>
+              <div className="flip-card" key={cordel.id} onClick={() => handleCordelSelected(cordel.id)}>
                 <div className="flip-card-inner">
                   <div className="flip-card-front">
                     <img src={cordel.frontCoverUrl} alt="" />
