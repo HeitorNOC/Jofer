@@ -8,6 +8,7 @@ import {
   CommentSection,
   CordelContainer,
   CordelMain,
+  FormError,
   IconContainer,
   PdfIcon,
   RightSection,
@@ -18,9 +19,29 @@ import {
 } from "./styles";
 import { FilePdf } from "@phosphor-icons/react";
 import { useSession } from "next-auth/react";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
+const commentSchema = z.object({
+  comment: z
+    .string().min(2, {
+      message: "O comentário deve ter pelo menos 2 caracteres."
+    })
+    .refine((value) => !hasProfanity(value), {
+      message: "O comentário contém palavras proibidas",
+    }),
+});
+
+type CommentFormData = z.infer<typeof commentSchema>
 
 const queryClient = new QueryClient();
+
+const hasProfanity = (text: string): boolean => {
+  const forbiddenWords = ["palavrão1", "palavrão2", "palavrão3"];
+  const words = text.split(" ");
+  return words.some((word) => forbiddenWords.includes(word.toLowerCase()));
+};
 
 export default function Cordel() {
   const session = useSession()
@@ -38,9 +59,20 @@ export default function Cordel() {
     queryFn: () => fetchCordel(),
   });
 
+  const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm<CommentFormData>({
+    resolver: zodResolver(commentSchema)
+  })
+
   const openPdf = (pdfLink: string) => {
     window.open(pdfLink, "_blank");
   };
+
+  async function handleConfirmComment(data: CommentFormData) {
+    const { comment } = data
+
+    console.log(comment)
+  }
+
 
   return (
     <CordelContainer>
@@ -61,19 +93,23 @@ export default function Cordel() {
           <RightSection>
             {session.data ? (
               <CommentSection>
-                <h1>Comentários</h1>
+                <h1>Comentários:</h1>
                 {
                   data.comments.length == 0 ? (
                     <CommentContainer>
-                      <form action="">
+                      <form onSubmit={handleSubmit(handleConfirmComment)}>
 
-                      <h1>Ainda não existem comentários, faça o primeiro:</h1>
-                      <CommentInput>
-                        <div className="form__group field">
-                        <textarea className="form__field" placeholder="Name" />
-                            <label htmlFor="name" className="form__label">Comentários</label>
-                        </div>
-                      </CommentInput>
+                        <h1>Ainda não existem comentários, faça o primeiro!</h1>
+                        <CommentInput>
+                          <div className="form__group field">
+                            <textarea className="form__field" placeholder="Name" {...register('comment')}/>
+                            <label htmlFor="name" className="form__label">Comentário</label>
+                          </div>
+                        </CommentInput>
+                        {errors.comment && (
+                          <FormError>{errors.comment.message}</FormError>
+                        )}
+                        <button disabled={isSubmitting} type="submit" className="btn">Comentar</button>
                       </form>
                     </CommentContainer>
                   ) : (
