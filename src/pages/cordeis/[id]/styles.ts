@@ -6,38 +6,46 @@ export const CordelContainer = styled("div", {});
 
 export const CordelMain = styled("div", {
   display: "flex",
-  
+  alignItems: "flex-start",
   justifyContent: "space-between",
   padding: "0 250px",
   marginTop: 50
 });
 
 export const RightSection = styled("div", {
-  width: "100%"
+  marginLeft: 200,
+  width: "100%",
+  maxWidth: "59%",
 });
 
 export const CommentSection = styled("div", {
-  width: "100%",
+  
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "flex-start",
   color: "White",
-  
+
 });
 
 export const CommentContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  
+  width: "100%",
+
+  h1: {
+    alignSelf: "center",
+    marginTop: 20,
+  },
+
   '.btn': {
     position: 'relative',
     fontSize: '17px',
     textDecoration: 'none',
     padding: '1em 2.5em',
     display: 'inline-block',
-    borderRadius: '6em',
+    //borderRadius: '6em',
     transition: 'all .2s',
     border: 'none',
     fontWeight: 700,
@@ -61,7 +69,7 @@ export const CommentContainer = styled("div", {
     display: 'inline-block',
     height: '100%',
     width: '100%',
-    borderRadius: '100px',
+    //borderRadius: '100px',
     position: 'absolute',
     top: 0,
     left: 0,
@@ -84,22 +92,24 @@ export const FormError = styled("p", {
 })
 
 export const CommentInput = styled("div", {
-  width: "100%",
+  
   marginBottom: 20,
   marginTop: 10,
 
   '.form__group': {
     position: 'relative',
     padding: '20px 0 0',
-    width: '325%',
-    height: "auto"
+    width: '100%',
+    height: "auto",
+    
+    
   },
 
   '.form__field': {
     fontFamily: 'inherit',
     width: '100%',
-    padding: "7px 0 100px 0",
-
+    padding: "7px 0 100px 0 ",
+    
     border: '2px solid #000',
     outline: '0',
     fontSize: '17px',
@@ -111,7 +121,8 @@ export const CommentInput = styled("div", {
     alignItems: 'flex-start',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
-
+    
+    
   },
 
   '.form__field::placeholder': {
@@ -138,15 +149,16 @@ export const CommentInput = styled("div", {
   },
 
   '.form__field:focus': {
-    paddingBottom: '6px',
+    
     fontWeight: 700,
-    borderWidth: '3px',
+    
     borderColor: '#000',
-    borderImageSlice: 1,
+    //borderImageSlice: 1,
     padding: "7px 0 100px 0",
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
     background: '#fff',
+    
   },
 
   '.form__field:focus ~ .form__label': {
@@ -169,7 +181,7 @@ export const CommentInput = styled("div", {
 export const CardContainer = styled("div", {
   width: "max-content",
   height: "700px",
-  border: "1px solid #ccc",
+  border: "2px solid #000",
   borderRadius: "8px",
   padding: "16px",
   display: "flex",
@@ -194,6 +206,7 @@ export const IconContainer = styled("div", {
 
 export const PdfIcon = styled(FilePdf, {
   fontSize: "30px",
+  color: "#fff"
 });
 
 export const Thumbnail = styled("div", {
@@ -221,11 +234,12 @@ export const Title = styled("h3", {
   overflow: "hidden",
   textOverflow: "ellipsis",
   whiteSpace: "nowrap",
+  color: '#fff'
 });
 
 export const Subtitle = styled("div", {
-  fontSize: "14px",
-  color: "#777",
+  fontSize: "16px",
+  color: "#fff",
   overflow: "hidden",
   textOverflow: "ellipsis",
 });
@@ -233,17 +247,48 @@ export const Subtitle = styled("div", {
 export const CommentDiv = styled("div", {
   display: "flex",
   flexDirection:"column",
-  justifyContent: "flex-start"
+  justifyContent: "flex-start",
+  
+  maxHeight: 250,
+  overflowY: "auto",
+  
 })
 
 export const CommentBox = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  height: 90,
+  margin: "20px 0",
+  padding: "10px",
+  border: "2px solid #000",
   
 })
 
 export const LeftBox = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 
+  gap: 10,
+
+  div: {
+    display: "flex",
+    flexDirection:"column",
+    gap: 10
+  }
 })
 
 export const RightBox = styled("div", {
-
+  height: 70,
+  width: "70%",
+  padding: 5,
+  borderRadius: 8,
+  
+  
+  marginLeft: 20,
+  color: "#fff",
+  fontSize: 16,
+  
+  whiteSpace: "pre-wrap",
+  wordWrap: "break-word"
 })

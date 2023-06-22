@@ -27,6 +27,8 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
+import { formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
 const commentSchema = z.object({
   comment: z
@@ -130,7 +132,7 @@ export default function Cordel() {
                         <CommentInput>
                           <div className="form__group field">
                             <textarea className="form__field" placeholder="Name" {...register('comment')} />
-                            <label htmlFor="name" className="form__label">Comentário</label>
+                            <label htmlFor="name" className="form__label">Comentar</label>
                           </div>
                         </CommentInput>
                         {errors.comment && (
@@ -138,33 +140,86 @@ export default function Cordel() {
                         )}
                         <button disabled={isSubmitting} type="submit" className="btn">Comentar</button>
                       </form>
+                      <h1>Outros Comentários</h1>
+                      <CommentDiv>
                       {data.comments.map((item: any) => (
-                        <CommentDiv>
                           <CommentBox>
                             <LeftBox>
-                              <Image src={item.user.avatar_url} alt="Avatar" width={40} height={40} style={{ borderRadius: 999 }}/>
-                              <h4>{item.user.name}</h4>
+                              <div>
+                                <Image src={item.user.avatar_url} alt="Avatar" width={50} height={50} style={{ borderRadius: 999 }} />
+
+                              </div>
+                              <div>
+                                <h4>{item.user.name}</h4>
+                                <p>{formatDistanceToNow(new Date(item.createdAt), { locale: ptBR, addSuffix: true })}</p>
+                              </div>
                             </LeftBox>
                             <RightBox>
                               <p>{item.comment}</p>
                             </RightBox>
                           </CommentBox>
-                        </CommentDiv>
                       ))}
+                      </CommentDiv>
                     </CommentContainer>
                   )
                 }
               </CommentSection>
             ) : (
               <CommentSection>
-                <h1>Comentários</h1>
+                 <h1>Comentários</h1>
                 {
                   data.comments.length == 0 ? (
-                    <h1>Ainda não existem comentários, Faça Login para adicionar um comentário!</h1>
+                    <CommentContainer>
+                      <form onSubmit={handleSubmit(handleConfirmComment)}>
+
+                        <h1>Ainda não existem comentários, faça o primeiro!</h1>
+                        <CommentInput>
+                          <div className="form__group field">
+                            <textarea className="form__field" placeholder="Name" {...register('comment')} />
+                            <label htmlFor="name" className="form__label">Faça Login para comentar.</label>
+                          </div>
+                        </CommentInput>
+                        {errors.comment && (
+                          <FormError>{errors.comment.message}</FormError>
+                        )}
+                        <button disabled type="submit" className="btn" style={{ cursor: "not-allowed" }}>Comentar</button>
+                      </form>
+                    </CommentContainer>
                   ) : (
-                    data.comments.map((item: any) => (
-                      <h1>{item.comment}</h1>
-                    ))
+                    <CommentContainer>
+                      <form onSubmit={handleSubmit(handleConfirmComment)}>
+                        <CommentInput>
+                          <div className="form__group field">
+                            <textarea className="form__field" placeholder="Name" {...register('comment')} />
+                            <label htmlFor="name" className="form__label">Faça Login para comentar.</label>
+                          </div>
+                        </CommentInput>
+                        {errors.comment && (
+                          <FormError>{errors.comment.message}</FormError>
+                        )}
+                        <button disabled type="submit" className="btn" style={{ cursor: "not-allowed" }}>Comentar</button>
+                      </form>
+                      <h1>Outros Comentários</h1>
+                      <CommentDiv>
+                      {data.comments.map((item: any) => (
+                          <CommentBox>
+                            <LeftBox>
+                              <div>
+                                <Image src={item.user.avatar_url} alt="Avatar" width={50} height={50} style={{ borderRadius: 999 }} />
+
+                              </div>
+                              <div>
+                                <h4>{item.user.name}</h4>
+                                <p>{formatDistanceToNow(new Date(item.createdAt), { locale: ptBR, addSuffix: true })}</p>
+                              </div>
+                            </LeftBox>
+                            <RightBox>
+                              <p>{item.comment}</p>
+                            </RightBox>
+                          </CommentBox>
+                      ))}
+                      </CommentDiv>
+                    </CommentContainer>
                   )
                 }
               </CommentSection>
