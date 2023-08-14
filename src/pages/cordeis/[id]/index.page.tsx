@@ -101,7 +101,6 @@ export default function Cordel() {
             <Thumbnail>
               <ThumbnailImage src={"/" + data.frontCoverUrl} alt="image" fill style={{ objectFit: "cover" }} />
             </Thumbnail>
-            <Subtitle>{data.subtitle}</Subtitle>
           </CardContainer>
 
           <RightSection>
@@ -143,7 +142,9 @@ export default function Cordel() {
                       <h1>Outros Comentários</h1>
                       <CommentDiv>
                       {data.comments.map((item: any) => (
-                          <CommentBox>
+                          <CommentBox
+                            key={item.user.name}
+                          >
                             <LeftBox>
                               <div>
                                 <Image src={item.user.avatar_url} alt="Avatar" width={50} height={50} style={{ borderRadius: 999 }} />
@@ -202,7 +203,9 @@ export default function Cordel() {
                       <h1>Outros Comentários</h1>
                       <CommentDiv>
                       {data.comments.map((item: any) => (
-                          <CommentBox>
+                          <CommentBox
+                            key={item.user.name}
+                          >
                             <LeftBox>
                               <div>
                                 <Image src={item.user.avatar_url} alt="Avatar" width={50} height={50} style={{ borderRadius: 999 }} />

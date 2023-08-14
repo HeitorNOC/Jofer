@@ -26,7 +26,7 @@ export const Container = styled("div", {
     width: "100%",
     background: "#fff",
     borderRadius: "6px",
-    padding: "20px 40px 30px 10px",
+    padding: "50px 30px 50px 0",
     boxShadow: "0 5px 10px rgba(0, 0, 0, 0.2)",
 
     "@media (max-width: 1440px)": {
@@ -46,7 +46,7 @@ export const Container = styled("div", {
 
 export const Content = styled("div", {
     display: "flex",
-    alignItems: "center",
+    //alignItems: "center",
     justifyContent: "space-between",
 
     "@media (max-width: 1440px)": {
@@ -86,7 +86,7 @@ export const LeftSide = styled("div", {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+
     position: "relative",
 
     flexWrap: "wrap",
@@ -134,7 +134,7 @@ export const LeftSide = styled("div", {
 });
 
 export const Details = styled("div", {
-    margin: "16px 14px",
+    margin: "30px 14px",
     textAlign: "center",
 });
 
@@ -161,9 +161,9 @@ export const TextTwo = styled("div", {
 
 export const RightSide = styled("div", {
     display: "flex",
+    gap: 5,
     flexDirection: "column",
     width: "75%",
-    marginLeft: "75px",
 
     "@media (max-width: 1440px)": {
         width: "100%",

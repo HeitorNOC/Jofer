@@ -181,7 +181,7 @@ export const CommentInput = styled("div", {
 export const CardContainer = styled("div", {
   width: "max-content",
   height: "700px",
-  border: "2px solid #000",
+  //border: "2px solid #000",
   borderRadius: "8px",
   padding: "16px",
   display: "flex",

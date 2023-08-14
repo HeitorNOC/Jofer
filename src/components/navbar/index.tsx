@@ -13,10 +13,13 @@ import Logo from "../../../public/assets/images/Colibri.svg";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { SignIn, SignOut, List } from "@phosphor-icons/react";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
   const [showSidebar, setShowSidebar] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
+
+  const router = useRouter()
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -29,6 +32,10 @@ export default function Navbar() {
 
   function handleSignIn() {
     signIn("google");
+  }
+
+  async function handleContato() {
+    await router.push("/contact")
   }
 
   function handleSignOut() {
@@ -50,13 +57,13 @@ export default function Navbar() {
           </NavLeft>
           {windowWidth >= 769 ? (
             <NavRight>
-              <a href="#inicio">Início</a>
-              <a href="#bio">Biografia</a>
-              <a href="#cordeis">Cordéis</a>
-              <a href="#livros">Livros</a>
-              <a href="#videos">Vídeos</a>
-              <a href="#audios">Áudios</a>
-              <Button color={"white"}>Contato</Button>
+              <a href="/">Início</a>
+              <a href="/bio">Biografia</a>
+              <a href="/cordeis">Cordéis</a>
+              <a href="/livros">Livros</a>
+              <a href="/videos">Vídeos</a>
+              <a href="/audios">Áudios</a>
+              <Button onClick={handleContato} color={"white"}>Contato</Button>
               {session.data ? (
                 <Button onClick={handleSignOut}>
                   {session.data.user.name.split(" ", 1)}{" "}
@@ -78,13 +85,13 @@ export default function Navbar() {
       {showSidebar && windowWidth < 769 && (
         <>
           <SidebarLinks>
-            <a href="#inicio">Início</a>
-            <a href="#bio">Biografia</a>
-            <a href="#cordeis">Cordéis</a>
-            <a href="#livros">Livros</a>
-            <a href="#videos">Vídeos</a>
-            <a href="#audios">Áudios</a>
-            <Button color={"white"}>Contato</Button>
+            <a href="/">Início</a>
+            <a href="/bio">Biografia</a>
+            <a href="/cordeis">Cordéis</a>
+            <a href="/livros">Livros</a>
+            <a href="/videos">Vídeos</a>
+            <a href="/audios">Áudios</a>
+            <Button onClick={handleContato} color={"white"}>Contato</Button>
             {session.data ? (
               <Button onClick={handleSignOut}>
                 {session.data.user.name.split(" ", 1)} <SignOut color="#FFF" />
