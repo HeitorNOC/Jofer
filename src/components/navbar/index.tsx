@@ -61,8 +61,7 @@ export default function Navbar() {
               <a href="/bio">Biografia</a>
               <a href="/cordeis">Cordéis</a>
               <a href="/livros">Livros</a>
-              <a href="/videos">Vídeos</a>
-              <a href="/audios">Áudios</a>
+              <a href="/conteudos">Conteúdos</a>
               <Button onClick={handleContato} color={"white"}>Contato</Button>
               {session.data ? (
                 <Button onClick={handleSignOut}>
@@ -89,8 +88,7 @@ export default function Navbar() {
             <a href="/bio">Biografia</a>
             <a href="/cordeis">Cordéis</a>
             <a href="/livros">Livros</a>
-            <a href="/videos">Vídeos</a>
-            <a href="/audios">Áudios</a>
+            <a href="/conteudos">Conteúdos</a>
             <Button onClick={handleContato} color={"white"}>Contato</Button>
             {session.data ? (
               <Button onClick={handleSignOut}>

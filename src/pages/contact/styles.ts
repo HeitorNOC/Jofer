@@ -134,8 +134,9 @@ export const LeftSide = styled("div", {
 });
 
 export const Details = styled("div", {
-    margin: "30px 14px",
+    margin: "30px 14px 30px 5px ",
     textAlign: "center",
+    
 });
 
 export const DetailsIcon = styled("i", {
