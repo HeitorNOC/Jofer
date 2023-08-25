@@ -4,12 +4,12 @@ import { z } from "zod";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method == "GET") {
-    const cordelId = String(req.query.id)
+    const livroId = String(req.query.id)
     try {
 
-      const cordelAtual = await prisma.cordel.findUnique({
+      const livroAtual = await prisma.livro.findUnique({
         where: {
-          id: cordelId
+          id: livroId
         },
         include: {
           comments: {
@@ -20,26 +20,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       })
 
-      return res.status(200).json(cordelAtual)
+      return res.status(200).json(livroAtual)
     } catch (e) {
-      return res.status(500).json({ error: "Ocorreu um erro ao buscar o cordel." });
+      return res.status(500).json({ error: "Ocorreu um erro ao buscar o livro." });
 
     }
   } else if ( req.method == "POST") {
     try {
 
-      const CreateCordelPostBody = z.object({
+      const CreatelivroPostBody = z.object({
         comment: z.string(),
         userId: z.string(),
-        cordelId: z.string()
+        livroId: z.string()
       })
       
-      const { comment, userId, cordelId } = CreateCordelPostBody.parse(req.body)
+      const { comment, userId, livroId } = CreatelivroPostBody.parse(req.body)
       
       await prisma.comment.create({
         data: {
           comment,
-          cordelId,
+          livroId,
           userId
         }
       })

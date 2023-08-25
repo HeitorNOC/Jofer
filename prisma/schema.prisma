@@ -67,16 +67,30 @@ model Cordel {
   comments      Comment[]
 }
 
+model Livro {
+  id            String    @id @default(uuid())
+  number        Int
+  title         String
+  subtitle      String
+  author        String
+  pdfUrl        String
+  frontCoverUrl String
+  backCoverUrl  String
+  comments      Comment[]
+}
+
 model Comment {
   id        String   @id @default(uuid())
   comment   String
   userId    String // Referência ao ID do usuário que fez o comentário
-  cordelId  String // Referência ao ID do livro ao qual o comentário pertence
+  cordelId  String? // Referência ao ID do livro ao qual o comentário pertence
+  livroId   String?
   createdAt DateTime @default(now())
 
   // Relacionamento com o usuário
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   // Relacionamento com o livro
-  cordel Cordel @relation(fields: [cordelId], references: [id], onDelete: Cascade)
+  cordel Cordel? @relation(fields: [cordelId], references: [id], onDelete: Cascade)
+  livro  Livro?  @relation(fields: [livroId], references: [id], onDelete: Cascade)
 }
