@@ -1,18 +1,20 @@
-import { Header } from '../components/header'
+import { Navbar } from '@/components/navbar'
 import { ReactNode } from 'react'
+import { Footer } from '@/components/footer'
 
 interface LayoutProps {
   children: ReactNode
 }
 
-export default function AppLayout({ children }: LayoutProps) {
+export function AppLayout({ children }: LayoutProps) {
   return (
     <div className="flex min-h-screen flex-col antialiased">
-      <Header />
+      <Navbar />
 
-      <div className="flex flex-1 flex-col gap-4 p-8 pt-6">
+      <div className="flex flex-1 flex-col gap-4 pt-6">
         {children}
       </div>
+      <Footer />
     </div>
   )
 }

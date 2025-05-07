@@ -58,19 +58,23 @@ model User {
 }
 
 model Book {
-  id       Int       @id @default(autoincrement())
-  title    String
-  author   String
-  pdfUrl   String
-  coverUrl String
-  comments Comment[]
+  id            Int       @id @default(autoincrement())
+  title         String
+  type          String
+  number        Int
+  author        String
+  subtitle      String
+  pdfUrl        String
+  frontCoverUrl String
+  backCoverUrl  String
+  comments      Comment[]
 }
 
 model Comment {
   id        Int      @id @default(autoincrement())
   comment   String
   userId    String
-  bookId    Int 
+  bookId    Int
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id])
