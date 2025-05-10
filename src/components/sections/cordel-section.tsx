@@ -1,11 +1,13 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { gsap, Power1 } from "gsap";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const categories = [
     { title: "Amor e Fé", desc: "Explorações poéticas sobre o amor e a fé espírita." },
@@ -29,9 +31,29 @@ const cordeis = [
 
 export function CordelSection() {
     const router = useRouter();
+    const sectionRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        if (!sectionRef.current) return;
+
+        const ctx = gsap.context(() => {
+            gsap.from(sectionRef.current!.children, {
+                opacity: 0,
+                y: 40,
+                duration: 1,
+                ease: Power1.easeOut,
+                stagger: 0.2,
+            });
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
-        <section className="min-h-screen flex flex-col justify-between bg-tertirary px-6 md:px-20 py-16 text-foreground">
+        <section
+            ref={sectionRef}
+            className="min-h-screen flex flex-col justify-between bg-tertirary px-6 md:px-20 py-16 text-foreground"
+        >
             <div className="flex flex-col lg:flex-row gap-12 mb-12">
                 <div className="flex-1 space-y-6">
                     <h2 className="text-4xl font-bold">Cordéis Espíritas</h2>
@@ -41,16 +63,15 @@ export function CordelSection() {
                         Escolha uma categoria abaixo e descubra versos que tocam o coração.
                     </p>
                     <p className="text-base italic">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.”</p>
-                    
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {categories.map((c) => (
-                            <div key={c.title} className="border rounded-lg p-4 hover:shadow-lg transition-shadow">
-                                <h3 className="font-semibold mb-2">{c.title}</h3>
-                                <p className="text-sm text-muted-foreground">{c.desc}</p>
-                            </div>
-                        ))}
-                    </div>
+                    {categories.map((c) => (
+                        <div key={c.title} className="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+                            <h3 className="font-semibold mb-2">{c.title}</h3>
+                            <p className="text-sm text-muted-foreground">{c.desc}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             <Swiper
@@ -81,8 +102,7 @@ export function CordelSection() {
 
             <div className="text-center space-y-4">
                 <h2 className="max-w-3xl mx-auto text-2xl leading-relaxed">
-                    Adquira agora e mergulhe
-                    nesse universo de versos e ensinamentos por um valor simbólico!
+                    Adquira agora e mergulhe nesse universo de versos e ensinamentos por um valor simbólico!
                 </h2>
                 <button
                     onClick={() => router.push("/cordeis")}

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import HospitalIcon from "../../../public/assets/images/mcm_logo.jpg";
@@ -42,9 +41,8 @@ export function VideosSection() {
         {videos.map((v, i) => (
           <div
             key={v.id}
-            className={`flex flex-col md:flex-row items-center gap-8 ${
-              i % 2 === 1 ? "md:flex-row-reverse" : ""
-            }`}
+            className={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 1 ? "md:flex-row-reverse" : ""
+              }`}
           >
             <div className="flex-1 space-y-4 text-left">
               <div className="flex items-center">

@@ -1,7 +1,7 @@
+import { ClientLayout } from '@/_layouts/client-layout'
+import { ClientThemeProvider } from '@/components/theme/client-theme-provider'
 import { Inter as FontSans } from 'next/font/google'
 import './index.css'
-import { ClientThemeProvider } from '@/components/theme/client-theme-provider'
-import { ClientLayout } from '@/_layouts/client-layout'
 
 const fontSans = FontSans({ subsets: ['latin'], variable: '--font-sans' })
 

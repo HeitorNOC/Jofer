@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Image from "next/image";
 import { gsap, Power1 } from "gsap";
-import ProfilePic from "../../../public/assets/images/Hero.png";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
+import ProfilePic from "../../../public/assets/images/Hero.png";
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -18,21 +18,23 @@ export function AboutSection() {
 
   useEffect(() => {
     if (!sectionRef.current) return;
+    gsap.set(sectionRef.current, { opacity: 0 });
     const ctx = gsap.context(() => {
+      gsap.to(sectionRef.current, { opacity: 1, duration: 0.5 });
       const tl = gsap.timeline({ defaults: { ease: Power1.easeOut, duration: 0.8 } });
       tl.from(headingRef.current, { y: -30, opacity: 0 })
-        .from(textRefs.current,     { y: 20, opacity: 0, stagger: 0.2 }, "-=0.4")
-        .from(buttonRef.current,    { scale: 0.8, opacity: 0 }, "-=0.4")
+        .from(textRefs.current, { y: 20, opacity: 0, stagger: 0.2 }, "-=0.4")
+        .from(buttonRef.current, { scale: 0.8, opacity: 0 }, "-=0.4")
         .from(imageContainerRef.current, { x: 50, opacity: 0 }, "-=0.6")
-        .from(cardRefs.current,     { y: 30, opacity: 0, stagger: 0.2 }, "-=0.6");
+        .from(cardRefs.current, { y: 30, opacity: 0, stagger: 0.2 }, "-=0.6");
     }, sectionRef);
     return () => ctx.revert();
   }, []);
 
   const stats = [
-    { label: "Cordéis Publicados",     value: 51 },
-    { label: "Livros Publicados",      value: 1 },
-    { label: "Palestras Ministradas",  value: "+ de 50" },
+    { label: "Cordéis Publicados", value: 51 },
+    { label: "Livros Publicados", value: 1 },
+    { label: "Palestras Ministradas", value: "+ de 50" },
   ];
 
   const bioParagraphs = [

@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
 import { gsap, Power1 } from "gsap";
 import Image from "next/image";
-import HeroImage from "../../../public/assets/images/Hero.png";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
 import Colibri from "../../../public/assets/images/Colibri.svg";
+import HeroImage from "../../../public/assets/images/Hero.png";
 import { Button } from "../ui/button";
 
 const quotes = [
@@ -20,9 +20,11 @@ export function HeroSection() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLParagraphElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (
+      !sectionRef.current ||
       !headerRef.current ||
       !subtitleRef.current ||
       !buttonsRef.current ||
@@ -31,61 +33,69 @@ export function HeroSection() {
       return;
     }
 
-    let idx = 0;
-    const introTl = gsap.timeline();
-    introTl
-      .from(headerRef.current, {
-        y: -40,
-        opacity: 0,
-        duration: 1,
-        ease: Power1.easeOut,
-      })
-      .from(
-        subtitleRef.current,
-        { y: -20, opacity: 0, duration: 0.8, ease: Power1.easeOut },
-        "-=0.6"
-      )
-      .from(
-        Array.from(buttonsRef.current.children),
-        {
-          x: -20,
+    let idx = 0; // Adicione esta linha
+
+    gsap.set(sectionRef.current, { opacity: 0 });
+
+    const ctx = gsap.context(() => {
+      gsap.to(sectionRef.current, { opacity: 1, duration: 0.5 });
+
+      const introTl = gsap.timeline();
+      introTl
+        .from(headerRef.current, {
+          y: -40,
           opacity: 0,
-          duration: 0.6,
-          stagger: 0.2,
+          duration: 1,
           ease: Power1.easeOut,
-        },
-        "-=0.4"
-      );
+        })
+        .from(
+          subtitleRef.current,
+          { y: -20, opacity: 0, duration: 0.8, ease: Power1.easeOut },
+          "-=0.6"
+        )
+        .from(
+          Array.from(buttonsRef.current?.children ?? []),
+          {
+            x: -20,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: Power1.easeOut,
+          },
+          "-=0.4"
+        );
 
-    const rotateQuote = () => {
-      quoteRef.current!.textContent = quotes[idx];
-      gsap.to(quoteRef.current, {
-        opacity: 1,
-        duration: 1.5,
-        ease: Power1.easeInOut,
-      });
-      gsap.to(quoteRef.current, {
-        opacity: 0,
-        duration: 1.5,
-        delay: 5,
-        ease: Power1.easeInOut,
-        onComplete: () => {
-          idx = (idx + 1) % quotes.length;
-          rotateQuote();
-        },
-      });
-    };
+      const rotateQuote = () => {
+        quoteRef.current!.textContent = quotes[idx];
+        gsap.to(quoteRef.current, {
+          opacity: 1,
+          duration: 1.5,
+          ease: Power1.easeInOut,
+        });
+        gsap.to(quoteRef.current, {
+          opacity: 0,
+          duration: 1.5,
+          delay: 5,
+          ease: Power1.easeInOut,
+          onComplete: () => {
+            idx = (idx + 1) % quotes.length;
+            rotateQuote();
+          },
+        });
+      };
 
-    rotateQuote();
+      rotateQuote();
+    }, sectionRef);
 
-    return () => {
-      introTl.kill();
-      gsap.killTweensOf(quoteRef.current!);
-    };
+    return () => ctx.revert();
   }, []);
 
+
   return (
-    <section className="flex flex-col justify-between items-center min-h-screen pt-25 bg-quaternary dark:bg-quaternary-dark text-gray-900 dark:text-gray-100">
+    <section
+      ref={sectionRef}
+      className="hero-section opacity-0 transition-opacity duration-500 flex flex-col justify-between items-center min-h-screen pt-25 bg-quaternary dark:bg-quaternary-dark text-gray-900 dark:text-gray-100"
+    >
       <div className="w-full max-w-6xl flex flex md:flex-row items-center justify-between">
         <div className="flex flex-col align-middle justify-center space-y-2 text-center md:text-left">
           <h1
