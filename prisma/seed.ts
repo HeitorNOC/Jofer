@@ -15,6 +15,7 @@ async function main() {
         title: book.title,
         number: book.number,
         type: book.type,
+        category: book.category,
         subtitle: book.subtitle || "",
         author: book.author,
         pdfUrl: book.pdfUrl,
@@ -29,6 +30,7 @@ async function main() {
       data: {
         title: livro.title,
         number: livro.number,
+        category: livro.category,
         type: livro.type,
         subtitle: livro.subtitle || "",
         author: livro.author,

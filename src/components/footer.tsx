@@ -1,17 +1,42 @@
-import { Pizza } from "lucide-react";
+import { Instagram, Facebook, Youtube } from "lucide-react";
 
 export function Footer() {
-    return (
-      <footer className="bg-background text-muted-foreground py-6 text-center text-sm">
-        <p>© {new Date().getFullYear()} João Ferreira | Todos os direitos reservados</p>
-        <div className="flex justify-center gap-4">
-          <a href="https://github.com/joaof" target="_blank" rel="noopener noreferrer">
-            <Pizza size={24} />
+  return (
+    <footer className="bg-background text-muted-foreground py-8">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4">
+        <p className="text-sm">
+          © {new Date().getFullYear()} João Ferreira | Todos os direitos reservados
+        </p>
+        <div className="flex space-x-6">
+          <a
+            href="https://instagram.com/seu_perfil"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="hover:text-primary transition-colors"
+          >
+            <Instagram size={24} />
           </a>
-          <a href="mailto:joao@exemplo.com" target="_blank" rel="noopener noreferrer">
-            <Pizza size={24} />
+          <a
+            href="https://facebook.com/seu_perfil"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="hover:text-primary transition-colors"
+          >
+            <Facebook size={24} />
+          </a>
+          <a
+            href="https://youtube.com/seu_canal"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            className="hover:text-primary transition-colors"
+          >
+            <Youtube size={24} />
           </a>
         </div>
-      </footer>
-    );
-  }
+      </div>
+    </footer>
+  );
+}

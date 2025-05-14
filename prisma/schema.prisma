@@ -62,6 +62,7 @@ model Book {
   title         String
   type          String
   number        Int
+  category      String
   author        String
   subtitle      String
   pdfUrl        String

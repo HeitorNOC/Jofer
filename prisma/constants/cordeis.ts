@@ -2,6 +2,7 @@ export const cordeis = [
     {
         number: 1,
         type: "cordel",
+        category: "Amor e Fé",
         title: "O consolador prometido",
         subtitle: "Considerações acerca do surgimento do espiritismo",
         author: "João Ferreira",
@@ -12,6 +13,7 @@ export const cordeis = [
     {
         number: 2,
         type: "cordel",
+        category: "Amor e Fé",
         title: "Nossa dor, nossa mestra",
         subtitle: "A dor e o sofrimento sob a ótica espírita",
         author: "João Ferreira",
@@ -21,6 +23,7 @@ export const cordeis = [
     },
     {
         number: 5,
+        category: "Amor e Fé",
         type: "cordel",
         title: "Deixai vir a mim as criancinhas",
         author: "João Ferreira",
@@ -30,6 +33,7 @@ export const cordeis = [
     },
     {
         number: 9,
+        category: "Amor e Fé",
         type: "cordel",
         title: "A família sob a ótica espírita",
         author: "João Ferreira",
@@ -39,6 +43,7 @@ export const cordeis = [
     },
     {
         number: 11,
+        category: "Amor e Fé",
         type: "cordel",
         title: "O homem de bem sob a ótica espírita",
         author: "João Ferreira",
@@ -48,6 +53,7 @@ export const cordeis = [
     },
     {
         number: 19,
+        category: "Amor e Fé",
         type: "cordel",
         title: "A felicidade sob a ótica espírita",
         author: "João Ferreira",
@@ -58,6 +64,7 @@ export const cordeis = [
     {
         number: 20,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "A cremação de corpos",
         author: "João Ferreira",
         subtitle: "O destino dos cadáveres sob a ótica espírita",
@@ -68,6 +75,7 @@ export const cordeis = [
     {
         number: 21,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Mediunidade ultrajada",
         author: "João Ferreira",
         subtitle: "Os falsos profetas sob a ótica espírita",
@@ -78,6 +86,7 @@ export const cordeis = [
     {
         number: 22,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Os sonhos sob a ótica espírita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1tWXLa60yNj_22SFXANe3UHDI2zngCgA8/view?usp=sharing",
@@ -87,6 +96,7 @@ export const cordeis = [
     {
         number: 23,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Causa e efeito",
         subtitle: "Considerações acerca da lei do retorno",
         author: "João Ferreira",
@@ -97,6 +107,7 @@ export const cordeis = [
     {
         number: 24,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Judas à luz da misericórdia",
         subtitle: "Considerações em torno da figura de judas iscariotes",
         author: "João Ferreira",
@@ -107,6 +118,7 @@ export const cordeis = [
     {
         number: 25,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Mestre, por que choras",
         subtitle: "Lições retiradas do choro de Jesus",
         author: "João Ferreira",
@@ -117,6 +129,7 @@ export const cordeis = [
     {
         number: 26,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "A porta estreita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1GEC8X4tFYvctWmB82rMHMZg7f9GU1ziZ/view?usp=sharing",
@@ -126,6 +139,7 @@ export const cordeis = [
     {
         number: 27,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "27 - Por que morrem as flores",
         subtitle: "As mortes prematuras sob a ótica espírita",
         author: "João Ferreira",
@@ -136,6 +150,7 @@ export const cordeis = [
     {
         number: 28,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Culpa e remorso",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1G2II7zTadpcH5InDjEfa40au5A_Ws_lL/view?usp=sharing",
@@ -145,6 +160,7 @@ export const cordeis = [
     {
         number: 29,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Eu sou",
         subtitle: "A busca pelo Cristo consolador",
         author: "João Ferreira",
@@ -155,6 +171,7 @@ export const cordeis = [
     {
         number: 30,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Um olhar para os pobres e estropiados",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/12WEkb3lbcJSvtfD6thvA6bJDvuzgKtf4/view?usp=sharing",
@@ -164,6 +181,7 @@ export const cordeis = [
     {
         number: 34,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Gratidão sob a ótica espírita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1cQwSpBTe1MEg8tRqONSBQ6taP0UqcqXj/view?usp=sharing",
@@ -173,6 +191,7 @@ export const cordeis = [
     {
         number: 35,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Animais, nós também.",
         subtitle: "A evolução dos animais sob a ótica espírita",
         author: "João Ferreira",
@@ -183,6 +202,7 @@ export const cordeis = [
     {
         number: 37,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "A depressão sob a ótica espírita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1C2LFKvhWWrFZan3whIsEuCr1wG11-VPR/view?usp=sharing",
@@ -192,6 +212,7 @@ export const cordeis = [
     {
         number: 38,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Superiores e subordinados",
         subtitle: "A autoridade sob a ótica espírita",
         author: "João Ferreira",
@@ -202,6 +223,7 @@ export const cordeis = [
     {
         number: 39,
         type: "cordel",
+        category: "Vida após a Morte",
         title: "Vampirismo espiritual e emocional",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/13kcmpsm9aUg3APWDp9U6Sfe4cvWPJd3k/view?usp=sharing",
@@ -211,6 +233,7 @@ export const cordeis = [
     {
         number: 40,
         type: "cordel",
+        category: "Mediunidade",
         title: "Deus",
         subtitle: "A evolução do pensamento humano sobre a existência do criador",
         author: "João Ferreira",
@@ -221,6 +244,7 @@ export const cordeis = [
     {
         number: 41,
         type: "cordel",
+        category: "Ética Espírita",
         title: "O recurso terapêutico do passe 1",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1A-wko7IAPss8cMZn7EeFTAiE0DXOMqzM/view?usp=sharing",
@@ -230,6 +254,7 @@ export const cordeis = [
     {
         number: 42,
         type: "cordel",
+        category: "Ética Espírita",
         title: "O recurso terapêutico do passe 2",
         subtitle: "O autopasse",
         author: "João Ferreira",
@@ -240,6 +265,7 @@ export const cordeis = [
     {
         number: 43,
         type: "cordel",
+        category: "Ética Espírita",
         title: "O recurso terapêutico do passe 3",
         subtitle: "Magnetismo na água",
         author: "João Ferreira",
@@ -250,6 +276,7 @@ export const cordeis = [
     {
         number: 44,
         type: "cordel",
+        category: "Ética Espírita",
         title: "Lições da parábola",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1vTdM1C_UCX64-eUEZ4itRwEynghqgum4/view?usp=sharing",
@@ -259,6 +286,7 @@ export const cordeis = [
     {
         number: 45,
         type: "cordel",
+        category: "Ética Espírita",
         title: "Embainha tua espada",
         subtitle: "A conduta cristã diante das agressões",
         author: "João Ferreira",
@@ -269,6 +297,7 @@ export const cordeis = [
     {
         number: 46,
         type: "cordel",
+        category: "Ética Espírita",
         title: "A compaixão sob a ótica espírita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/12P3HXvlDYxoJ5VIHZY7h-Bz4qn5Qm9yS/view?usp=sharing",
@@ -278,6 +307,7 @@ export const cordeis = [
     {
         number: 47,
         type: "cordel",
+        category: "Ética Espírita",
         title: "Espíritos protetores, familiares e simpáticos",
         subtitle: "A missão dos anjos guardiões",
         author: "João Ferreira",
@@ -288,6 +318,7 @@ export const cordeis = [
     {
         number: 48,
         type: "cordel",
+        category: "Ética Espírita",
         title: "Tatuagem sob a otica espirita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/12fxJlU2a6QhW5iSRAD2n2WOl01loXbn3/view?usp=sharing",
@@ -297,6 +328,7 @@ export const cordeis = [
     {
         number: 49,
         type: "cordel",
+        category: "Ética Espírita",
         title: "Transição planetária",
         subtitle: "A transformação da terra em mundo de regeneração",
         author: "João Ferreira",
@@ -307,6 +339,7 @@ export const cordeis = [
     {
         number: 50,
         type: "cordel",
+        category: "Ética Espírita",
         title: "Paraíso, inferno e purgatório",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1ONdrv8PpBov7K_2-1pV32jUBIJbgw_ER/view?usp=sharing",
@@ -316,6 +349,7 @@ export const cordeis = [
     {
         number: 51,
         type: "cordel",
+        category: "Ética Espírita",
         title: "Pilares da doutrina espírita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/1FmsvuOvcauYtrRGSjix9ZT2roNjrMqsm/view?usp=sharing",

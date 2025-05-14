@@ -2,6 +2,7 @@ export const livros = [
     {
         number: 1,
         type: "livro",
+        category: "livro",
         title: "Viver como as borboletas",
         subtitle: null,
         author: "João Ferreira",
