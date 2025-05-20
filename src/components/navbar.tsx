@@ -16,7 +16,7 @@ export function Navbar() {
   const navItems = [
     { title: "Início", href: "/" },
     { title: "Cordéis", href: "/cordeis" },
-    { title: "Livros", href: "/livros" },
+    { title: "Livro", href: "/livro" },
     { title: "Palestras", href: "/palestras" },
     { title: "Contato", href: "/contato" },
   ];

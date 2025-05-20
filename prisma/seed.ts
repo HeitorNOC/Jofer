@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { cordeis } from './constants/cordeis';
 import { livros } from './constants/livros';
+import { palestras } from './constants/palestras';
 
 const prisma = new PrismaClient();
 
@@ -41,9 +42,22 @@ async function main() {
     });
   });
 
+  const palestraSeed = palestras.map((p) =>
+    prisma.palestra.create({
+      data: {
+        title: p.title,
+        date: new Date(p.date),
+        summary: p.summary,
+        youtubeUrl: p.youtubeUrl,
+      }
+    })
+  );
 
-  await prisma.$transaction([...cordelSeed,]);
-  await prisma.$transaction([...livroSeed,]);
+  await prisma.$transaction([
+    ...cordelSeed,
+    ...livroSeed,
+    ...palestraSeed,
+  ]);
 }
 
 main()

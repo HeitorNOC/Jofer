@@ -1,80 +1,69 @@
 "use client";
-import { useRouter, useParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
-interface Cordel {
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  frontCoverUrl: string;
-  backCoverUrl: string;
-  pdfUrl: string;
-}
-
-async function fetchCordel(id: string): Promise<Cordel> {
-  const res = await fetch(`/api/cordeis/${id}`);
-  if (!res.ok) {
-    const body = await res.json().catch(() => null);
-    throw new Error(body?.error || res.statusText);
-  }
-  return res.json();
-}
-
-export default function CordelDetailPage() {
+export default function LivroPage() {
   const router = useRouter();
-  const { id } = useParams();
+  const modelRef = useRef<any>(null);
+  const [loaded, setLoaded] = useState(false);
 
-  if (!id) {
-    return <div className="pt-24 text-center text-red-600">Cordel não encontrado.</div>;
-  }
+  useEffect(() => {
+    import("@google/model-viewer").catch(console.error);
+  }, []);
 
-  const { data, isLoading, isError, error } = useQuery<Cordel, Error>({
-    queryKey: ["cordel", id],
-    queryFn: () => fetchCordel(id as string),
-  });
-
-  if (isLoading) {
-    return <div className="pt-24 text-center">Carregando...</div>;
-  }
-  if (isError) {
-    return <div className="pt-24 text-center text-red-600">Erro: {error.message}</div>;
-  }
-  if (!data) {
-    return <div className="pt-24 text-center">Nenhum dado disponível.</div>;
-  }
+  useEffect(() => {
+    const mv = modelRef.current;
+    if (mv) {
+      const onLoad = () => setLoaded(true);
+      mv.addEventListener("load", onLoad);
+      return () => mv.removeEventListener("load", onLoad);
+    }
+  }, [modelRef.current]);
 
   const buyOnWhatsapp = () => {
-    const text = encodeURIComponent(`Olá, tenho interesse no cordel "${data.title}"`);
+    const text = encodeURIComponent(
+      `Olá, tenho interesse no livro "Viver como as Borboletas"`
+    );
     window.open(`https://wa.me/5581996213652?text=${text}`, "_blank");
   };
 
   return (
     <div className="pt-20 px-4 sm:px-6 lg:px-16 pb-8">
-      <div className="flex flex-col sm:flex-row items-center justify-between mb-6 max-w-4xl mx-auto">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">{data.title}</h1>
-        <Button
-          onClick={() => router.push("/cordeis")}
-          className="cursor-pointer px-6 py-3 bg-primary text-background border-2 border-primary hover:bg-transparent hover:text-primary hover:border-primary transition-colors"
-        >
+      <header className="max-w-4xl mx-auto mb-6 flex items-center justify-between">
+        <h1 className="text-3xl sm:text-4xl font-bold">Viver como as Borboletas</h1>
+        <Button variant="link" onClick={() => router.push("/")}>
           ← Voltar
         </Button>
-      </div>
+      </header>
 
       <div className="flex flex-col lg:flex-row items-start gap-8 max-w-4xl mx-auto">
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <img
-            src={encodeURI(`/${data.frontCoverUrl}`)}
-            alt={data.title}
-            className="rounded-lg shadow-lg max-h-64 sm:max-h-80 md:max-h-[28rem] object-contain"
+        <div className="relative w-full lg:w-1/2 flex justify-center">
+          {!loaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-background/50 z-10">
+              <div className="animate-spin h-12 w-12 border-4 border-primary border-t-transparent rounded-full" />
+            </div>
+          )}
+          <model-viewer
+            ref={modelRef}
+            src="/assets/livros/01 - Viver como as borboletas/viver-como-as-borboletas-hard-cover-glb.glb"
+            alt="Livro 3D Viver como as Borboletas"
+            camera-controls
+            environment-image="neutral"
+            auto-rotate
+            auto-rotate-delay="0"
+            style={{ width: "500px", height: "500px" }}
           />
         </div>
-        <div className="w-full lg:w-1/2 flex flex-col justify-center">
-          <h3 className="text-base sm:text-lg text-gray-600 mb-4">{data.subtitle}</h3>
-          <p className="text-gray-700 mb-6 max-w-prose break-words">
-            Você pode adquirir o PDF deste cordel por um valor simbólico.&nbsp;
-            <span className="font-semibold">Clique no botão abaixo</span> para comprar via WhatsApp.
+        <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-4">
+          <p className="text-lg md:text-xl">
+            “Viver como as Borboletas” é uma coletânea de poemas de João Ferreira de Oliveira
+            que celebra a leveza e o renascimento espiritual, inspirando o leitor a enxergar
+            beleza nas pequenas alegrias.
+          </p>
+          <p className="italic text-muted-foreground">
+            Explore imagens poéticas que falam ao coração e convidam à reflexão sobre o voo
+            libertador da alma.
           </p>
           <button className="Btn self-start" onClick={buyOnWhatsapp}>
             <div className="sign">
@@ -122,6 +111,7 @@ export default function CordelDetailPage() {
           font-size: 1em;
           font-weight: 600;
           transition: 0.3s;
+          white-space: nowrap;
         }
         .Btn:hover {
           width: 140px;
