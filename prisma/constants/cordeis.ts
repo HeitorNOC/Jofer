@@ -140,7 +140,7 @@ export const cordeis = [
         number: 27,
         type: "cordel",
         category: "Vida após a Morte",
-        title: "27 - Por que morrem as flores",
+        title: "Por que morrem as flores",
         subtitle: "As mortes prematuras sob a ótica espírita",
         author: "João Ferreira",
         pdfUrl: "https://drive.google.com/file/d/14Q1u5ifxIs6BzvCdPyde7YJ_FaMpcSQ1/view?usp=sharing",
