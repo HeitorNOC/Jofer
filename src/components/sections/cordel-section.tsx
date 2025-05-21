@@ -74,11 +74,6 @@ export function CordelSection() {
         }
     }, []);
 
-    const handleCordelClick = (index: number) => {
-        // Navigate to specific cordel page
-        router.push(`/cordeis/${index + 1}`);
-    };
-
     return (
         <section
             ref={sectionRef}
@@ -154,7 +149,6 @@ export function CordelSection() {
                             <SwiperSlide
                                 key={folder}
                                 className="!w-[220px] sm:!w-[240px] !h-[320px] sm:!h-[340px] cursor-pointer"
-                                onClick={() => handleCordelClick(index)}
                             >
                                 <div className={`relative w-full h-full rounded-xl overflow-hidden shadow-xl transition-all duration-500 ${activeIndex === index ? 'scale-105 shadow-2xl' : 'scale-95 opacity-80'}`}>
                                     <Image
@@ -163,7 +157,7 @@ export function CordelSection() {
                                         fill
                                         sizes="(max-width: 768px) 220px, 240px"
                                         className="object-cover"
-                                        priority={index < 3} // Prioritize loading first 3 images
+                                        priority={index < 3}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
                                         <h4 className="text-white text-sm font-medium line-clamp-2">

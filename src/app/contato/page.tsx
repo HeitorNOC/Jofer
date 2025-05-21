@@ -50,8 +50,8 @@ export default function ContatoPage() {
         {
             icon: <Mail className="h-5 w-5" />,
             title: "Email",
-            value: "joao@exemplo.com",
-            action: () => window.open("mailto:joao@exemplo.com"),
+            value: "oliver.jofer@gmail.com",
+            action: () => window.open("mailto:oliver.jofer@gmail.com"),
         },
         {
             icon: <MapPin className="h-5 w-5" />,

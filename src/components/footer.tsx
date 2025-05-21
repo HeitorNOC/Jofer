@@ -1,4 +1,4 @@
-import { Facebook, Heart, Instagram, Mail, Youtube } from "lucide-react";
+import { Heart, Instagram, Mail } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 
@@ -51,10 +51,10 @@ export function Footer() {
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail size={16} />
                 <a
-                  href="mailto:joao@exemplo.com"
+                  href="mailto:oliver.jofer@gmail.com"
                   className="hover:text-primary transition-colors"
                 >
-                  joao@exemplo.com
+                  oliver.jofer@gmail.com
                 </a>
               </li>
               <li>
@@ -86,7 +86,7 @@ export function Footer() {
               >
                 <Instagram size={20} />
               </a>
-              <a
+              {/* <a
                 href="https://facebook.com/seu_perfil"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -103,7 +103,7 @@ export function Footer() {
                 className="p-2 bg-white dark:bg-gray-800 rounded-full text-muted-foreground hover:text-primary hover:shadow-md transition-all duration-200"
               >
                 <Youtube size={20} />
-              </a>
+              </a> */}
             </div>
           </div>
         </div>
