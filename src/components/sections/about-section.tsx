@@ -80,7 +80,7 @@ export function AboutSection() {
 
   const bioParagraphs = [
     "Olá, eu sou João Ferreira de Oliveira, nascido em União dos Palmares (AL) e residente em Recife (PE). Poeta desde a adolescência, autor de 51 cordéis na Série Reluz e do livro 'Viver como as Borboletas.'",
-    "Lecionei Português e Espanhol com pós em Linguística e atuo há mais de 20 anos como expositor espírita em congressos por todo o Brasil.",
+    "Lecionei Português e Espanhol com pós em Linguística e atuo há mais de 20 anos como expositor e palestrante espírita.",
     "Minha missão é levar reflexão e esperança pelo verso popular e pela palavra que eleva o espírito.",
   ];
 
