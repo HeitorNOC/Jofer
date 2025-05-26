@@ -22,7 +22,7 @@ export function Navbar() {
     { title: "Início", href: "/" },
     { title: "Cordéis", href: "/cordeis" },
     { title: "Livro", href: "/livro" },
-    /* { title: "Palestras", href: "/palestras" }, */
+    { title: "Palestras", href: "/palestras" },
     { title: "Contato", href: "/contato" },
   ];
 

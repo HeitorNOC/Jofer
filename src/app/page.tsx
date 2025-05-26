@@ -14,7 +14,7 @@ export default function Home() {
       <AboutSection />
       <CordelSection />
       <BookSection />
-      {/* <VideosSection /> */}
+      <VideosSection />
     </main>
   );
 }
