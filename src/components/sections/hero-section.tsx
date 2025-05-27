@@ -8,9 +8,9 @@ import Colibri from "../../../public/assets/images/Colibri.svg";
 import HeroImage from "../../../public/assets/images/Hero.png";
 
 const quotes = [
-  "No céu do sertão, o verso voa como colibri, leve e colorido.",
-  "Cordel é canto do povo, ecoando a memória em papel.",
-  "Cada estrofe um suspiro, cada rima um coração que bate.",
+  "Portanto, decidi: vou viver como as borboletas, que se entregam às flores de corpo e asas.",
+  "A estrada é mais curta para aquele que ama.",
+  "Faz como a flor: rompe o casulo.",
 ];
 
 export function HeroSection() {
