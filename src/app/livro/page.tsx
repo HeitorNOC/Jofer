@@ -53,7 +53,6 @@ export default function LivroPage() {
     pages: "120",
     language: "Português",
     isbn: "978-65-00-XXXXX-X",
-    price: "R$ 39,90",
     description: `"Viver como as Borboletas" é uma coletânea de poemas que celebra a leveza e o renascimento espiritual, inspirando o leitor a enxergar beleza nas pequenas alegrias. Explore imagens poéticas que falam ao coração e convidam à reflexão sobre o voo libertador da alma.`,
     highlights: [
       "Poemas inspiradores sobre transformação espiritual",
@@ -146,7 +145,6 @@ export default function LivroPage() {
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4 sm:items-center">
-                <span className="text-3xl font-bold text-primary">{bookDetails.price}</span>
                 <Button
                   onClick={buyOnWhatsapp}
                   className="bg-green-600 hover:bg-green-700 text-white gap-2"
