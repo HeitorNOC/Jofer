@@ -63,12 +63,12 @@ export function AboutSection() {
   const stats = [
     {
       label: "Cordéis Publicados",
-      value: 51,
+      value: 52,
       icon: <BookOpen className="w-6 h-6 text-primary/70" />
     },
     {
       label: "Livros Publicados",
-      value: 1,
+      value: 4,
       icon: <BookOpen className="w-6 h-6 text-primary/70" />
     },
     {
@@ -79,9 +79,11 @@ export function AboutSection() {
   ];
 
   const bioParagraphs = [
-    "Olá, eu sou João Ferreira de Oliveira, nascido em União dos Palmares (AL) e residente em Recife (PE). Poeta desde a adolescência, autor de 51 cordéis na Série Reluz e do livro 'Viver como as Borboletas.'",
-    "Lecionei Português e Espanhol com pós em Linguística e atuo há mais de 20 anos como expositor e palestrante espírita.",
-    "Minha missão é levar reflexão e esperança pelo verso popular e pela palavra que eleva o espírito.",
+    <>
+      Olá, eu sou João Ferreira de Oliveira, nascido em União dos Palmares (AL) e residente em Recife (PE). Poeta desde a adolescência, autor de 52 cordéis da <em>Série Reluz</em> e dos livros <em>“Tatuagens(poemas)”</em>, <em>“Se vos amardes”</em>, <em>“O relógio da torre do tempo”</em> e <em>“Viver como as Borboletas”</em>.
+    </>,
+    "Sou graduado em língua portuguesa(fafire) e pós graduado em linguística aplicada ao ensino da língua espanhola(ufpe), atuando, há mais de 20 anos como palestrante espírita.",
+    "Minha missão é difundir o pensamento espírita através da poesia popular.",
   ];
 
   return (
