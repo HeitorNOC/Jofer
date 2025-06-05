@@ -29,7 +29,7 @@ export function Footer() {
                 { label: "Início", href: "/" },
                 { label: "Cordéis", href: "/cordeis" },
                 { label: "Livro", href: "/livro" },
-                { label: "Palestras", href: "/palestras" },
+                /* { label: "Palestras", href: "/palestras" }, */
                 { label: "Contato", href: "/contato" },
               ].map((link) => (
                 <li key={link.href}>
