@@ -128,14 +128,14 @@ export function BookSection() {
               <div className="flex items-start gap-3">
                 <Quote className="text-primary/60 w-8 h-8 flex-shrink-0 mt-1" />
                 <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                  &ldquo;Viver como as Borboletas&rdquo; é uma coleção de poemas inspiradores que
+                  &ldquo;Viver como as Borboletas&rdquo; é uma seleção de poemas inspiradores que
                   celebram a leveza da alma e o renascimento espiritual.
                 </p>
               </div>
 
               <p className="italic text-gray-600 dark:text-gray-400 max-w-lg">
                 João Ferreira de Oliveira explora, através de imagens poéticas, o voo
-                libertador do espírito e as pequenas grandes alegrias da vida.
+                libertador do espírito e as pequenas-grandes alegrias da vida.
               </p>
 
               <div className="flex flex-wrap gap-2 items-center">
@@ -200,10 +200,7 @@ export function BookSection() {
               className="mt-8 bg-white/80 dark:bg-gray-800/80 p-4 rounded-lg shadow-lg max-w-sm mx-auto lg:mx-0 lg:ml-auto"
             >
               <p className="text-sm italic text-gray-600 dark:text-gray-300">
-                &ldquo;Como as borboletas, somos seres em constante transformação, buscando a leveza do voo e a beleza das cores que só a evolução espiritual pode proporcionar.&rdquo;
-              </p>
-              <p className="text-right text-xs font-medium text-gray-500 dark:text-gray-400 mt-2">
-                — Trecho do livro
+                &ldquo;Como as borboletas, somos seres em constante transformação, gozando a leveza do voo e a beleza das cores que só a evolução espiritual pode proporcionar.&rdquo;
               </p>
             </div>
           </div>

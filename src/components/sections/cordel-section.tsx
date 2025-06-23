@@ -97,9 +97,8 @@ export function CordelSection() {
                     <p
                         className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
                     >
-                        Os cordéis são folhetos poéticos que narram histórias, poemas e
-                        ensinamentos espirituais, criados por João Ferreira de Oliveira.
-                        Escolha uma categoria abaixo e descubra versos que tocam o coração.
+                        Os cordéis são folhetos poéticos que apresentam histórias, poemas e
+                        ensinamentos espirituais.
                     </p>
                 </div>
 
@@ -178,7 +177,7 @@ export function CordelSection() {
                     </div>
 
                     <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-                        Adquira agora e mergulhe nesse universo de versos e ensinamentos!
+                        Adquira agora sua versão virtual em PDF e mergulhe neste universo da poética espírita!
                     </h3>
 
                     <p className="text-gray-600 dark:text-gray-300">
