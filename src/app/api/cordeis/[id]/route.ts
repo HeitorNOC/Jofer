@@ -1,7 +1,8 @@
 // src/app/api/cordeis/[id]/route.ts
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
+import { cordeis as cordeisData } from "../../../../../prisma/constants/cordeis";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 export async function GET(
   request: Request,
@@ -18,6 +19,10 @@ export async function GET(
   }
 
   try {
+    // Find the cordel in the constants file by number (which is equivalent to id)
+    const cordel = cordeisData.find(cordel => cordel.number === idInt);
+
+    /* Original database code (commented out)
     const cordel = await prisma.book.findUnique({
       where: { id: idInt },
       select: {
@@ -30,6 +35,7 @@ export async function GET(
         category: true
       }
     });
+    */
 
     if (!cordel) {
       return new Response(
@@ -38,8 +44,19 @@ export async function GET(
       );
     }
 
+    // Map the cordel data to match the expected structure
+    const formattedCordel = {
+      id: cordel.number,
+      title: cordel.title,
+      subtitle: cordel.subtitle || null,
+      frontCoverUrl: cordel.frontCoverUrl,
+      backCoverUrl: cordel.backCoverUrl,
+      pdfUrl: cordel.pdfUrl,
+      category: cordel.category
+    };
+
     return new Response(
-      JSON.stringify(cordel),
+      JSON.stringify(formattedCordel),
       { headers: { "Content-Type": "application/json" } }
     );
   } catch (e: any) {

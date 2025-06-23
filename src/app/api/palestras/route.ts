@@ -1,6 +1,7 @@
 // src/app/api/palestras/route.ts
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+// import { prisma } from "@/lib/prisma";
+import { palestras as palestrasData } from "../../.././../prisma/constants/palestras";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -9,6 +10,24 @@ export async function GET(request: Request) {
   const skip = (page - 1) * perPage;
 
   try {
+    // Sort palestras by date in descending order
+    const sortedPalestras = [...palestrasData].sort((a, b) => 
+      new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    // Get total count
+    const totalCount = sortedPalestras.length;
+    
+    // Apply pagination
+    const palestras = sortedPalestras.slice(skip, skip + perPage).map((palestra, index) => ({
+      id: skip + index + 1, // Generate an id since the constants don't have one
+      title: palestra.title,
+      date: palestra.date,
+      summary: palestra.summary,
+      youtubeUrl: palestra.youtubeUrl,
+    }));
+
+    /* Original database code (commented out)
     const totalCount = await prisma.palestra.count();
     const palestras = await prisma.palestra.findMany({
       skip,
@@ -22,6 +41,7 @@ export async function GET(request: Request) {
         youtubeUrl: true,
       },
     });
+    */
 
     return NextResponse.json({
       palestras,

@@ -1,7 +1,6 @@
 // import { PrismaClient } from "@prisma/client";
 import { cordeis as cordeisData } from "../../.././../prisma/constants/cordeis";
 
-// Commented out database access code
 // const prisma = new PrismaClient();
 
 export async function GET(request: Request) {
@@ -13,6 +12,7 @@ export async function GET(request: Request) {
   const skip = (page - 1) * perPage;
 
   try {
+    // Using data from assets instead of database
     // Filter cordeis based on category and search parameters
     let filteredCordeis = cordeisData.filter(cordel => {
       // Filter by type (always "cordel")
@@ -48,7 +48,7 @@ export async function GET(request: Request) {
       }
     );
 
-    /* Commented out database access code
+    /* Original database code (commented out)
     const totalCount = await prisma.book.count({
       where: {
         category: category ? { contains: category } : undefined,
@@ -67,7 +67,6 @@ export async function GET(request: Request) {
       take: perPage
     });
     */
-
   } catch (error) {
     return new Response(JSON.stringify({ error: "Erro ao buscar os cordeis." }), {
       status: 500,
