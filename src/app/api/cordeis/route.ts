@@ -30,8 +30,16 @@ export async function GET(request: Request) {
     // Get total count after filtering
     const totalCount = filteredCordeis.length;
 
-    // Apply pagination
-    const cordeis = filteredCordeis.slice(skip, skip + perPage);
+    // Apply pagination and format the data to match the expected structure
+    const cordeis = filteredCordeis.slice(skip, skip + perPage).map(cordel => ({
+      id: cordel.number, // Map number to id
+      title: cordel.title,
+      subtitle: cordel.subtitle || null,
+      frontCoverUrl: cordel.frontCoverUrl,
+      backCoverUrl: cordel.backCoverUrl,
+      pdfUrl: cordel.pdfUrl,
+      category: cordel.category
+    }));
 
     // Return the same response structure as before
     return new Response(
